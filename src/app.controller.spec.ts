@@ -21,6 +21,7 @@ describe('AppController', () => {
                 weight: 80,
                 height: 1.8,
                 bmi: 24.69,
+                evaluation: 'Optimum Range',
             });
         });
     });

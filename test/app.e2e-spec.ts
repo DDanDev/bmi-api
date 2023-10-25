@@ -19,6 +19,6 @@ describe('AppController (e2e)', () => {
         return request(app.getHttpServer())
             .get('/80/1.80')
             .expect(200)
-            .expect({ weight: 80, height: 1.8, bmi: 24.69 });
+            .expect({ weight: 80, height: 1.8, bmi: 24.69, evaluation: 'Optimum Range' });
     });
 });
