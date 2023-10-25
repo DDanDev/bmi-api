@@ -1,13 +1,16 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AppService } from './app.service';
 import { bmiInfo } from './bmi';
+import { GetBMIParams } from './params.dto';
 
 @Controller()
 export class AppController {
     constructor(private readonly appService: AppService) {}
 
     @Get(':weight/:height')
-    getBMI(@Param('weight') weight: string, @Param('height') height: string): bmiInfo {
+    @UsePipes(new ValidationPipe())
+    getBMI(@Param() getBMIParams: GetBMIParams): bmiInfo {
+        const { weight, height } = getBMIParams;
         return this.appService.getBMI(weight, height);
     }
 }

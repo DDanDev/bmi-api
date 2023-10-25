@@ -4,19 +4,9 @@ import { bmiInfo } from './bmi';
 @Injectable()
 export class AppService {
     getBMI(weight: string, height: string): bmiInfo {
-        // validate input!!
         const weightN = parseFloat(weight);
         const heightN = parseFloat(height);
-        if (isNaN(weightN) || isNaN(heightN)) {
-            return {
-                weight: 0,
-                height: 0,
-                bmi: 0,
-                evaluation: 'Invalid Input',
-            };
-        }
 
-        // calculate bmi
         const bmi = weightN / heightN ** 2;
         let evaluation: string;
         switch (true) {
